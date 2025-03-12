@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>picoCTF Custom Challenge</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>picoCTF Custom Challenge</h1>
+    
+    <div class="challenge-box">
+        <h2>Challenge: Find the Flag</h2>
+        <p>Welcome to this custom picoCTF challenge! Your task is simple: download the file below and find the hidden flag within it. The flag follows the standard picoCTF format: <code>picoCTF{...}</code></p>
+        
+        <p><strong>Points:</strong> 100</p>
+        <p><strong>Hint:</strong> Examine the file carefully - the flag might be hiding in plain sight or require some basic analysis!</p>
+        
+        <p><a href="challenge_file.zip" download>Download Challenge File</a></p>
+        
+        <form id="flag-form">
+            <label for="flag-input">Enter the flag:</label>
+            <input type="text" id="flag-input" name="flag" placeholder="picoCTF{...}">
+            <button type="submit">Submit</button>
+        </form>
+        <p id="result" class="result-message"></p>
+    </div>
+    
+    <p>Once you find the flag, submit it above to verify. Good luck!</p>
+
+    <script>
+        // Simple client-side flag checking (not secure for real CTF - use server-side in production)
+        document.getElementById('flag-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const userInput = document.getElementById('flag-input').value.trim();
+            const resultElement = document.getElementById('result');
+            
+            // Example flag: picoCTF{example_flag_123}
+            // Using a simple hash to obscure the flag (SHA-256 of the flag would be better with a server)
+            const correctFlag = 'picoCTF{vietnam}';
+            const hashedCorrectFlag = btoa(correctFlag); // Base64 encoding as a simple obfuscation
+            
+            // Hash user input the same way
+            const hashedUserInput = btoa(userInput);
+
+            if (hashedUserInput === hashedCorrectFlag) {
+                resultElement.textContent = 'Correct! Flag accepted.';
+                resultElement.style.color = 'green';
+            } else {
+                resultElement.textContent = 'Incorrect flag. Try again!';
+                resultElement.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>
