@@ -1,0 +1,103 @@
+Semester Project Title
+IT 101 – Introduction to Cybersecurity
+Daniel Thi Graviet
+March 12, 2025
+
+CTF Core Concept
+The core concepts of my CTF challenge revolve around file system navigation, script interaction, and basic cryptography.
+Participants will need to use Linux terminal commands to explore and locate hidden files, interact with a Python script by
+providing correct input to reveal messages, and decrypt an encrypted message using the Caesar cipher to progress through
+the challenge.
+
+CTF Technologies
+To create my CTF challenge, I will use a combination of Linux commands (e.g., ls -a to find hidden files) in a terminal
+environment for navigation, Python for scripting a program that requires specific input to display messages, and a Caesar
+cipher for encrypting a message that participants must decrypt. The challenge itself is packaged using index.html for a basic
+webpage, styles.css for styling, and a ctf.zip file to bundle and distribute the challenge materials. No specific hardware
+beyond a standard computer running a Linux-based OS is required.
+
+CTF Solver Steps
+1. Visit the website hosting the CTF challenge and download the provided ctf.zip file.
+2. Unzip the ctf.zip file to access its contents, then open a terminal and use Linux commands to navigate the
+extracted directory structure.
+3. Navigate to the box1 directory and run the command python3 box1file.py > password.txt to execute a Python script
+that outputs a secret password into password.txt.
+4. Move to the box2 directory and run python3 box2file.py, which prompts the user to input the secret password
+obtained from box1.
+5. Enter the correct password from password.txt; upon success, the script provides a hint directing the user to find the
+first part of the flag in box3.
+6. Navigate to the box3 directory, locate an encrypted flag file, and use a Caesar cipher decryption tool (shifting the
+text 3 positions back) to decode it.
+7. Observe that the decrypted text appears in Vietnamese, but examine it closely to extract the first half of the flag:
+picoCTF{.
+8. In the box3 directory, use the command ls -a to reveal a hidden file named .secret, then run cat .secret to display
+its contents, which is the second half of the flag: vietnam}.
+9. Combine the two halves to form the complete flag: picoCTF{vietnam}.
+10. Submit the full flag picoCTF{vietnam} on the website to successfully complete the CTF challenge.
+CTF Developer Tasks
+1. Create a basic website using index.html and styles.css to host the CTF challenge and provide a download link for
+the ctf.zip file.
+2. Write a Python script (box1file.py) that outputs a secret password when executed, and ensure it works with the
+command python3 box1file.py > password.txt.
+3. Develop a second Python script (box2file.py) that prompts for the password from box1, validates it, and outputs a
+hint pointing to box3 when correct.
+4. Encrypt a message containing the first half of the flag (picoCTF{) using a Caesar cipher with a 3-position shift, and
+include Vietnamese text as a distraction, saving it in a file in box3.
+5. Create a hidden text file (.secret) in box3 containing the second half of the flag (vietnam}), ensuring it’s only visible
+with ls -a.
+6. Structure the directory layout (box1, box2, box3) with all necessary files, then package everything into a ctf.zip file
+for distribution.
+7. Test the entire challenge to ensure all steps work as intended and the flag picoCTF{vietnam} is obtainable.
+
+Expected Problems
+The most difficult part of this project might be ensuring the Python scripts work reliably across different systems, as solvers
+may use varying Python versions or terminal environments, potentially causing compatibility issues (e.g., Python 3.x vs. 2.x
+or path errors). Another challenge could be balancing the Caesar cipher’s difficulty—making it solvable yet not immediately
+obvious, especially with the Vietnamese red herring, which might confuse participants if not hinted at properly. Additionally,
+file permissions or hidden file visibility (e.g., .secret) might not behave consistently across operating systems (Linux vs.
+Windows), risking accessibility issues.
+
+Potential Solutions
+●
+To address Python compatibility issues, I’ll specify in the challenge instructions that solvers must use python3 (e.g.,
+“Run with python3 for best results”) and test both scripts (box1file.py and box2file.py) on multiple systems like
+Ubuntu and Windows Subsystem for Linux (WSL); I’ll also add a fallback in box1file.py to print the password to the
+console if the > password.txt redirection fails.
+●
+For balancing the Caesar cipher’s difficulty, I’ll include a subtle hint in box2file.py’s output (e.g.,
+“The key is a small
+step back—try 3”) to guide solvers to shift the cipher 3 positions back, while ensuring the picoCTF{ prefix remains
+distinct from the Vietnamese distraction text to avoid confusion.
+●
+To solve hidden file visibility problems, I’ll test the ctf.zip extraction on both Linux and Windows, explicitly mention
+in the box2 hint to “look for hidden treasures with ls -a (or dir on Windows),
+” and set the .secret file’s permissions to
+be readable (e.g., chmod 644) before zipping to ensure it’s accessible across platforms.
+
+Conclusion
+Through this CTF project, I hope to gain hands-on experience in designing basic HTML files to create a functional website
+for hosting the challenge, while also improving my proficiency with Linux commands by using them to navigate and hide files
+effectively. Additionally, I aim to sharpen my skills in paying attention to small details—like cipher shifts, file permissions, and
+script outputs—to ensure the challenge is both challenging and fair. Ultimately, I want to develop the ability to create
+something that others can understand and solve, crafting a clear, engaging experience that tests their problem-solving skills
+while being rewarding to complete.
+Appendix and Resources
+●
+W3Schools HTML Tutorial (https://www.w3schools.com/html/) - A beginner-friendly guide to creating and
+structuring basic index.html files, perfect for building the website to host my CTF challenge.
+●
+Linux Command Line Basics by Tecmint (https://www.tecmint.com/linux-command-line-basics-for-beginners/) - A
+resource covering essential Linux commands like ls -a, cat, and file navigation, which I’ll use to design the
+terminal-based parts of the challenge.
+●
+Python Official Documentation - Input/Output (https://docs.python.org/3/tutorial/inputoutput.html) - A detailed
+reference for writing Python scripts (like box1file.py and box2file.py) that handle user input and output messages,
+key to my password and hint system.
+●
+Crypto Corner - Caesar Cipher Tutorial (http://crypto.interactive-maths.com/caesar-cipher.html) - An explanation of
+the Caesar cipher with examples, helping me encrypt the flag with a 3-position shift and understand how solvers
+will decrypt it.
+●
+OverTheWire Wargames - Bandit (https://overthewire.org/wargames/bandit/) - A practical, interactive resource with
+CTF-style challenges focused on Linux navigation and file handling, inspiring ideas for hiding files like .secret and
+testing my own design.
