@@ -1,23 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>picoCTF Custom Challenge</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <h1>Caesar's Secret Trip to Vietnam</h1>
-    
+
     <div class="challenge-box">
         <h2>Challenge: Find the Flag</h2>
-        <p>Welcome to this custom picoCTF challenge! Your task is simple: download the file below and find the hidden flag within it. The flag follows the standard picoCTF format: <code>picoCTF{...}</code></p>
-        
-        <p><strong>Hint:</strong> Examine the file carefully - the flag might be hiding in plain sight or require some basic analysis! It would be a good idea to use the terminal to open and navigate the file.</p>
-        
+        <p>Description: Welcome to this custom picoCTF challenge! Your task is simple: download the file below and find
+            the hidden flag within it. The flag follows the standard picoCTF format: <code>picoCTF{...}</code></p>
+
+        <div class="hints-container">
+            <button id="hint1-btn" class="hint-button">Show Hint 1</button>
+            <p id="hint1" class="hint" style="display: none;"><strong>Hint 1:</strong> Use linux commands to navigate
+                the files and use python.</p>
+
+            <button id="hint2-btn" class="hint-button">Show Hint 2</button>
+            <p id="hint2" class="hint" style="display: none;"><strong>Hint 2:</strong> Parts of the flag may be hidden.
+            </p>
+        </div>
+
         <p><a href="ctf.zip" download>Download Challenge File</a></p>
         <p><a href="cheatsheet.txt" download>Download Cheatsheet</a></p>
-        
+
         <form id="flag-form">
             <label for="flag-input">Enter the flag:</label>
             <input type="text" id="flag-input" name="flag" placeholder="picoCTF{...}">
@@ -25,22 +36,49 @@
         </form>
         <p id="result" class="result-message"></p>
     </div>
-    
+
     <p>Once you find the flag, submit it above to verify. Good luck!</p>
+    <p>Tags: Linux, Crypto, Web</p>
+    <p>Category: Linux</p>
 
     <script>
+        // Hint reveal functionality
+        document.getElementById('hint1-btn').addEventListener('click', function () {
+            const hint1 = document.getElementById('hint1');
+            const btn = this;
+            if (hint1.style.display === 'none') {
+                hint1.style.display = 'block';
+                btn.textContent = 'Hide Hint 1';
+            } else {
+                hint1.style.display = 'none';
+                btn.textContent = 'Show Hint 1';
+            }
+        });
+
+        document.getElementById('hint2-btn').addEventListener('click', function () {
+            const hint2 = document.getElementById('hint2');
+            const btn = this;
+            if (hint2.style.display === 'none') {
+                hint2.style.display = 'block';
+                btn.textContent = 'Hide Hint 2';
+            } else {
+                hint2.style.display = 'none';
+                btn.textContent = 'Show Hint 2';
+            }
+        });
+
         // Simple client-side flag checking (not secure for real CTF - use server-side in production)
-        document.getElementById('flag-form').addEventListener('submit', function(event) {
+        document.getElementById('flag-form').addEventListener('submit', function (event) {
             event.preventDefault();
-            
+
             const userInput = document.getElementById('flag-input').value.trim();
             const resultElement = document.getElementById('result');
-            
+
             // Example flag: picoCTF{example_flag_123}
             // Using a simple hash to obscure the flag (SHA-256 of the flag would be better with a server)
             const correctFlag = 'picoCTF{vietnam}';
             const hashedCorrectFlag = btoa(correctFlag); // Base64 encoding as a simple obfuscation
-            
+
             // Hash user input the same way
             const hashedUserInput = btoa(userInput);
 
@@ -54,4 +92,5 @@
         });
     </script>
 </body>
+
 </html>

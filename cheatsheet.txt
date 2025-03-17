@@ -101,3 +101,13 @@ will decrypt it.
 OverTheWire Wargames - Bandit (https://overthewire.org/wargames/bandit/) - A practical, interactive resource with
 CTF-style challenges focused on Linux navigation and file handling, inspiring ideas for hiding files like .secret and
 testing my own design.
+
+Title
+
+Description (including what the goal is, links to any websites or resources they may want to use)
+
+Tags (keywords that related to it)
+
+Category (OSINT, Web, Crypto, Analysis (Log, Networks, etc.), Steg, Rev/Pwn, Other)
+
+Hints: At least two hints for those who are stuck.
