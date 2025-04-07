@@ -29,11 +29,11 @@ first part of the flag in box3.
 6. Navigate to the box3 directory, locate an encrypted flag file, and use a Caesar cipher decryption tool (shifting the
 text 3 positions back) to decode it.
 7. Observe that the decrypted text appears in Vietnamese, but examine it closely to extract the first half of the flag:
-picoCTF{.
+itc101{.
 8. In the box3 directory, use the command ls -a to reveal a hidden file named .secret, then run cat .secret to display
 its contents, which is the second half of the flag: vietnam}.
-9. Combine the two halves to form the complete flag: picoCTF{vietnam}.
-10. Submit the full flag picoCTF{vietnam} on the website to successfully complete the CTF challenge.
+9. Combine the two halves to form the complete flag: itc101{vietnam}.
+10. Submit the full flag itc101{vietnam} on the website to successfully complete the CTF challenge.
 CTF Developer Tasks
 1. Create a basic website using index.html and styles.css to host the CTF challenge and provide a download link for
 the ctf.zip file.
@@ -41,13 +41,13 @@ the ctf.zip file.
 command python3 box1file.py > password.txt.
 3. Develop a second Python script (box2file.py) that prompts for the password from box1, validates it, and outputs a
 hint pointing to box3 when correct.
-4. Encrypt a message containing the first half of the flag (picoCTF{) using a Caesar cipher with a 3-position shift, and
+4. Encrypt a message containing the first half of the flag (itc101{) using a Caesar cipher with a 3-position shift, and
 include Vietnamese text as a distraction, saving it in a file in box3.
 5. Create a hidden text file (.secret) in box3 containing the second half of the flag (vietnam}), ensuring it’s only visible
 with ls -a.
 6. Structure the directory layout (box1, box2, box3) with all necessary files, then package everything into a ctf.zip file
 for distribution.
-7. Test the entire challenge to ensure all steps work as intended and the flag picoCTF{vietnam} is obtainable.
+7. Test the entire challenge to ensure all steps work as intended and the flag itc101{vietnam} is obtainable.
 
 Expected Problems
 The most difficult part of this project might be ensuring the Python scripts work reliably across different systems, as solvers
@@ -66,7 +66,7 @@ console if the > password.txt redirection fails.
 ●
 For balancing the Caesar cipher’s difficulty, I’ll include a subtle hint in box2file.py’s output (e.g.,
 “The key is a small
-step back—try 3”) to guide solvers to shift the cipher 3 positions back, while ensuring the picoCTF{ prefix remains
+step back—try 3”) to guide solvers to shift the cipher 3 positions back, while ensuring the itc101{ prefix remains
 distinct from the Vietnamese distraction text to avoid confusion.
 ●
 To solve hidden file visibility problems, I’ll test the ctf.zip extraction on both Linux and Windows, explicitly mention

@@ -14,7 +14,7 @@
     <div class="challenge-box">
         <h2>Challenge: Find the Flag</h2>
         <p>Description: Welcome to this custom picoCTF challenge! Your task is simple: download the file below and find
-            the hidden flag within it. The flag follows the standard picoCTF format: <code>picoCTF{...}</code></p>
+            the hidden flag within it. The flag follows the picoCTF format: <code>itc101{...}</code></p>
 
         <div class="hints-container">
             <button id="hint1-btn" class="hint-button">Show Hint 1</button>
@@ -31,7 +31,7 @@
 
         <form id="flag-form">
             <label for="flag-input">Enter the flag:</label>
-            <input type="text" id="flag-input" name="flag" placeholder="picoCTF{...}">
+            <input type="text" id="flag-input" name="flag" placeholder="itc101{...}">
             <button type="submit">Submit</button>
         </form>
         <p id="result" class="result-message"></p>
@@ -74,9 +74,9 @@
             const userInput = document.getElementById('flag-input').value.trim();
             const resultElement = document.getElementById('result');
 
-            // Example flag: picoCTF{example_flag_123}
+            // Example flag: itc101{example_flag_123}
             // Using a simple hash to obscure the flag (SHA-256 of the flag would be better with a server)
-            const correctFlag = 'picoCTF{vietnam}';
+            const correctFlag = 'itc101{vietnam}';
             const hashedCorrectFlag = btoa(correctFlag); // Base64 encoding as a simple obfuscation
 
             // Hash user input the same way
